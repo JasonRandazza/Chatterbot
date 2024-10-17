@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
@@ -13,7 +15,7 @@ export default function Home() {
 
   const callGetResponse = async () => {
     setIsLoading(true);
-    let temp = [...messages]; // Use spread operator to avoid mutating state
+    const temp = [...messages]; // Use spread operator to avoid mutating state
     temp.push({ role: "user", content: theInput });
     setMessages(temp);
     setTheInput("");
@@ -64,13 +66,11 @@ export default function Home() {
             );
           })}
 
-          {isLoading ? (
+          {isLoading ? 
             <div className="self-start bg-gray-200 text-gray-800 w-max max-w-[18rem] rounded-md px-4 py-3 h-min">
               *thinking*
-            </div>
-          ) : (
-            ""
-          )}
+            </div> : ""}
+           
         </div>
         <div className="relative w-[80%] bottom-4 flex justify-center">
           <textarea
